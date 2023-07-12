@@ -50,12 +50,11 @@ public class Character {
             }
         });
         this.effects.forEach(effect -> {
-            if (health.get() != 0){
-                maxHealth = health.get();
-            } else {
-
-                maxHealth = health.get();
-            }
+            effect.getStatsList().forEach(stat -> {
+                if (stat.getName().equals("Health")) {
+                    health.set(health.get() + effect.getChangeStat());
+                }
+            });
         });
         this.maxHealth = health.get();
     }
